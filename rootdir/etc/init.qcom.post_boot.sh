@@ -94,7 +94,7 @@ case "$target" in
          echo 1 > /sys/module/rpm_resources/enable_low_power/pxo
          echo 1 > /sys/module/rpm_resources/enable_low_power/vdd_dig
          echo 1 > /sys/module/rpm_resources/enable_low_power/vdd_mem
-         echo 0 > /sys/module/pm_8x60/modes/cpu0/retention/idle_enabled
+         echo 1 > /sys/module/pm_8x60/modes/cpu0/retention/idle_enabled
          echo 1 > /sys/module/pm_8x60/modes/cpu1/retention/idle_enabled
          echo 1 > /sys/module/pm_8x60/modes/cpu2/retention/idle_enabled
          echo 1 > /sys/module/pm_8x60/modes/cpu3/retention/idle_enabled
@@ -127,9 +127,11 @@ case "$target" in
          echo 70 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold_multi_core
          echo 3 > /sys/devices/system/cpu/cpufreq/ondemand/down_differential_multi_core
          echo 918000 > /sys/devices/system/cpu/cpufreq/ondemand/optimal_freq
-         echo 1026000 > /sys/devices/system/cpu/cpufreq/ondemand/sync_freq
          echo 80 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold_any_cpu_load
          echo 1134000 > /sys/devices/system/cpu/cpufreq/ondemand/input_boost
+         echo 1026000 > /sys/module/cpu_boost/parameters/sync_threshold
+         echo 20 > /sys/module/cpu_boost/parameters/boost_ms
+         echo 1 > /dev/cpuctl/apps/cpu.notify_on_migrate
          chown system /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
          chown system /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
          chown system /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy

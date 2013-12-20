@@ -73,7 +73,7 @@ BOARD_HAVE_BLUETOOTH_QCOM := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 
 # Graphics
-BOARD_EGL_CFG := device/oppo/apq8064/configs/egl.cfg
+BOARD_EGL_CFG := device/oppo/apq8064-common/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
 TARGET_USES_C2D_COMPOSITION := true
@@ -119,6 +119,12 @@ TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_RECOVERY_SWIPE := true
+ifeq ($(WITH_SIMPLE_RECOVERY),true)
+    PRODUCT_EXTRA_RECOVERY_KEYS += vendor/extra/recovery_keys/OPPO_N1
+    TARGET_RECOVERY_FSTAB := device/oppo/apq8064-common/recovery.fstab
+else
+    TARGET_RECOVERY_FSTAB := device/oppo/apq8064-common/rootdir/etc/fstab.qcom
+endif
 
 # SELinux
 BOARD_SEPOLICY_DIRS += device/oppo/apq8064/sepolicy

@@ -2,7 +2,7 @@
 
 ifeq ($(BOARD_PROVIDES_LIBRIL),true)
 ifeq ($(BOARD_VENDOR),oppo)
-ifeq ($(TARGET_DEVICE),n1)
+ifneq ($(filter find5 n1, $(TARGET_DEVICE)),)
 
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)

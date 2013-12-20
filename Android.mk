@@ -16,7 +16,8 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_DEVICE),n1)
+ifeq ($(BOARD_VENDOR),oppo)
+ifeq ($(TARGET_BOARD_PLATFORM),msm8960)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
@@ -33,4 +34,5 @@ $(FIRMWARE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_SYMLINKS)
 
+endif
 endif

@@ -17,6 +17,10 @@ LOCAL_PATH:= $(call my-dir)
 # hw/<COPYPIX_HARDWARE_MODULE_ID>.<ro.board.platform>.so
 include $(CLEAR_VARS)
 
+ifeq ($(TARGET_DEVICE),find5)
+LOCAL_CFLAGS += -DHAS_NOTIFICATION_LED
+endif
+
 LOCAL_SRC_FILES := lights.c
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_SHARED_LIBRARIES := liblog libcutils

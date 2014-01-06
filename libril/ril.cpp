@@ -3322,9 +3322,9 @@ RIL_startEventLoop(void) {
     pthread_attr_init(&attr);
     pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
 
-    int ret = pthread_create(&s_tid_dispatch, &attr, eventLoop, NULL);
-    if (ret < 0) {
-        RLOGE("Failed to create dispatch thread: %s", strerror(errno));
+    int result = pthread_create(&s_tid_dispatch, &attr, eventLoop, NULL);
+    if (result != 0) {
+        RLOGE("Failed to create dispatch thread: %s", strerror(result));
         goto done;
     }
 

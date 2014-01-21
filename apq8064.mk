@@ -29,7 +29,8 @@ PRODUCT_PACKAGES += \
     init.qcom.bt.sh \
     init.qcom.post_boot.sh \
     init.qcom.usb.sh \
-    init.qcom.wifi.sh
+    init.qcom.wifi.sh \
+    init.bbv.sh
 
 # Ramdisk
 PRODUCT_PACKAGES += \

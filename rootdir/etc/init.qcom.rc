@@ -668,6 +668,10 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     group camera system inet input graphics net_bt_stack
 
 
+service bbvinit /system/bin/sh /system/etc/init.bbv.sh
+    class late_start
+    oneshot
+
 # CM Performance Profiles
 
 # Powersave

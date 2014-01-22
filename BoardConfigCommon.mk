@@ -72,6 +72,9 @@ BOARD_HAVE_BLUETOOTH_QCOM := true
 # Camera
 USE_DEVICE_SPECIFIC_CAMERA := true
 
+# CM Hardware
+BOARD_HARDWARE_CLASS += device/oppo/apq8064-common/cmhw
+
 # Graphics
 BOARD_EGL_CFG := device/oppo/apq8064-common/configs/egl.cfg
 USE_OPENGL_RENDERER := true

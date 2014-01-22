@@ -2,8 +2,10 @@ package com.cyanogenmod.settings.device;
 
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.hardware.input.InputManager;
 import android.os.IBinder;
 import android.os.RemoteException;
@@ -31,16 +33,27 @@ public class Startup extends BroadcastReceiver {
                 FileUtils.writeLine(node, value ? "1" : "0");
             }
 
-            IBinder b = ServiceManager.getService("gesture");
-            IGestureService sInstance = IGestureService.Stub.asInterface(b);
+            // Disable backtouch settings if needed
+            if (!context.getResources().getBoolean(
+                        com.android.internal.R.bool.config_enableGestureService)) {
+                ComponentName name = new ComponentName(context,
+                        "com.cyanogenmod.settings.device.GesturePadSettings");
+                PackageManager pm = context.getPackageManager();
+                pm.setComponentEnabledSetting(name,
+                        PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                        PackageManager.DONT_KILL_APP);
+            } else {
+                IBinder b = ServiceManager.getService("gesture");
+                IGestureService sInstance = IGestureService.Stub.asInterface(b);
 
-            // Set longPress event
-            toggleLongPress(context, sInstance, Constants.isPreferenceEnabled(
-                    context, Constants.TOUCHPAD_LONGPRESS_KEY, false));
+                // Set longPress event
+                toggleLongPress(context, sInstance, Constants.isPreferenceEnabled(
+                        context, Constants.TOUCHPAD_LONGPRESS_KEY, false));
 
-            // Set doubleTap event
-            toggleLongPress(context, sInstance, Constants.isPreferenceEnabled(
-                    context, Constants.TOUCHPAD_DOUBLETAP_KEY, false));
+                // Set doubleTap event
+                toggleLongPress(context, sInstance, Constants.isPreferenceEnabled(
+                        context, Constants.TOUCHPAD_DOUBLETAP_KEY, false));
+            }
         } else if (intent.getAction().equals("cyanogenmod.intent.action.GESTURE_CAMERA")) {
             long now = SystemClock.uptimeMillis();
             sendInputEvent(new KeyEvent(now, now, KeyEvent.ACTION_DOWN,

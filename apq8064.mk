@@ -83,6 +83,10 @@ PRODUCT_PACKAGES += \
     liboverlay \
     memtrack.msm8960
 
+# Keyhandler
+PRODUCT_PACKAGES += \
+    ConfigPanel
+
 # Keystore
 PRODUCT_PACKAGES += \
     keystore.msm8960

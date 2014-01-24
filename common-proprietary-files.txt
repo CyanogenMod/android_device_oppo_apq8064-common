@@ -2,6 +2,7 @@
 bin/btnvtool
 bin/ds_fmc_appd
 bin/hci_qcomm_init
+bin/hwaddrs
 bin/irsc_util
 bin/mpdecision
 bin/radish

@@ -667,6 +667,11 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     user camera
     group camera system inet input graphics net_bt_stack
 
+service nvinit /system/bin/hwaddrs
+    class core
+    user root
+    group system wifi
+    oneshot
 
 service bbvinit /system/bin/sh /system/etc/init.bbv.sh
     class late_start

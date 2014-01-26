@@ -27,7 +27,6 @@ TARGET_SCREEN_WIDTH := 1080
 PRODUCT_PACKAGES += \
     init.crda.sh \
     init.qcom.bt.sh \
-    init.qcom.post_boot.sh \
     init.qcom.usb.sh \
     init.qcom.wifi.sh \
     init.bbv.sh

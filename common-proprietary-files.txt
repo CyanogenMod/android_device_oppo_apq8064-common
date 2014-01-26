@@ -18,6 +18,7 @@ lib/libthermalclient.so
 
 # GPS
 -app/com.qualcomm.location.apk
+bin/gpsone_daemon
 bin/gsiff_daemon
 etc/permissions/com.qualcomm.location.xml
 lib/libgps.utils.so

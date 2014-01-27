@@ -72,7 +72,11 @@ lib/libmmparser.so
 lib/libmm-color-convertor.so
 lib/libDivxDrm.so
 lib/libExtendedExtractor.so
-
+lib/libOmxAacDec.so
+lib/libOmxAmrwbplusDec.so
+lib/libOmxEvrcDec.so
+lib/libOmxQcelp13Dec.so
+lib/libOmxWmaDec.so
 
 # Qualcomm framework
 lib/libdsi_netctrl.so

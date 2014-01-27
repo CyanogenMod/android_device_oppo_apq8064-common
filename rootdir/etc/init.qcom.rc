@@ -34,7 +34,7 @@ on early-init
     chown system system /sys/kernel/debug/kgsl/proc
 
 on init
-    export BOOTCLASSPATH ${BOOTCLASSPATH}:/system/framework/qcnvitems.jar:/system/framework/qcrilhook.jar
+    export BOOTCLASSPATH ${BOOTCLASSPATH}:/system/framework/qcnvitems.jar:/system/framework/qcrilhook.jar:/system/framework/qcmediaplayer.jar
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system

@@ -132,6 +132,11 @@ PRODUCT_PACKAGES += \
     libOmxQcelp13Enc \
     libstagefrighthw
 
+# MM extended
+PRODUCT_PACKAGES += \
+    libdashplayer \
+    qcmediaplayer
+
 # Power
 PRODUCT_PACKAGES += \
     power.msm8960

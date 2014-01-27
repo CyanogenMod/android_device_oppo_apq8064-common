@@ -67,8 +67,12 @@ etc/firmware/vidc_1080p.fw
 
 # Media
 lib/libI420colorconvert.so
+lib/libmmosal.so
+lib/libmmparser.so
 lib/libmm-color-convertor.so
+lib/libDivxDrm.so
 lib/libExtendedExtractor.so
+
 
 # Qualcomm framework
 lib/libdsi_netctrl.so

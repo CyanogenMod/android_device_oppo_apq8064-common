@@ -92,6 +92,9 @@ vendor/lib/libqmi_common_so.so
 vendor/lib/libqmi_encdec.so
 
 # Radio
+app/OppoNvProcess.apk
+app/OppoRadioShutdown.apk
+app/qcrilmsgtunnel.apk
 bin/bridgemgrd
 bin/efsks
 bin/ks
@@ -100,6 +103,10 @@ bin/nv_tee
 bin/qcks
 bin/qmuxd
 bin/rmt_storage
+etc/permissions/qcnvitems.xml
+etc/permissions/qcrilhook.xml
+framework/qcnvitems.jar
+framework/qcrilhook.jar
 lib/libnetmgr.so
 lib/libril-qc-qmi-1.so
 lib/libril-qcril-hook-oem.so
@@ -115,6 +122,8 @@ lib/libsensor_reg.so
 bin/oemwvtest
 bin/drmdiagapp
 bin/qseecomd
+etc/permissions/com.google.widevine.software.drm.xml
+framework/com.google.widevine.software.drm.jar
 lib/libdrmdecrypt.so
 lib/libdrmdiag.so
 lib/libdrmfs.so

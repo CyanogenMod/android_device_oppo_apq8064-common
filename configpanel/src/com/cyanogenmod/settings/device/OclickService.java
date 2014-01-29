@@ -1,13 +1,11 @@
 package com.cyanogenmod.settings.device;
 
-import java.util.Set;
 import java.util.UUID;
 
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
-import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCallback;
@@ -20,9 +18,9 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.hardware.input.InputManager;
+import android.media.AudioManager;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.SystemClock;
@@ -57,6 +55,7 @@ public class OclickService extends Service implements OnSharedPreferenceChangeLi
     boolean mAlerting;
     private Handler mRssiPoll = new Handler();
     private BluetoothDevice mOClickDevice;
+    private AudioManager mAudioManager;
 
     public static boolean isConnectedToOclick = false;
 
@@ -147,6 +146,8 @@ public class OclickService extends Service implements OnSharedPreferenceChangeLi
 
                 Log.d(TAG, "Executing ring alarm");
 
+                mAudioManager.setStreamVolume(AudioManager.STREAM_ALARM,
+                        mAudioManager.getStreamMaxVolume(AudioManager.STREAM_ALARM), 0);
                 mRingtone.play();
                 mHandler.removeCallbacks(mSingleTapRunnable);
 
@@ -232,8 +233,17 @@ public class OclickService extends Service implements OnSharedPreferenceChangeLi
         IntentFilter filter = new IntentFilter();
         filter.addAction(CANCEL_ALERT_PHONE);
         registerReceiver(mReceiver, filter);
-        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
-        mRingtone = RingtoneManager.getRingtone(getApplicationContext(), notification);
+        RingtoneManager ringtoneManager = new RingtoneManager(this);
+        ringtoneManager.setType(RingtoneManager.TYPE_ALARM);
+        int length = ringtoneManager.getCursor().getCount();
+        for (int i = 0; i < length; i++) {
+            mRingtone = ringtoneManager.getRingtone(i);
+            if (mRingtone != null && mRingtone.getTitle(this)
+                    .toLowerCase().contains("barium")) {
+                break;
+            }
+        }
+        mAudioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
     }
 
     AlarmCancel mReceiver = new AlarmCancel();

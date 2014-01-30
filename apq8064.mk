@@ -73,6 +73,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/izat.conf:system/etc/izat.conf \
     $(LOCAL_PATH)/gps/sap.conf:system/etc/sap.conf
 
+PRODUCT_PACKAGES += \
+     libxml2
+#    libbson \
+#    libcurl \
+
 # Graphics
 PRODUCT_PACKAGES += \
     copybit.msm8960 \

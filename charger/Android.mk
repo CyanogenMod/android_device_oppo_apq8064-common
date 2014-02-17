@@ -3,26 +3,6 @@
 ifneq ($(BUILD_TINY_ANDROID),true)
 
 LOCAL_PATH := $(call my-dir)
-include $(CLEAR_VARS)
-
-LOCAL_SRC_FILES := \
-	charger.c
-
-LOCAL_CFLAGS += -DCHARGER_ENABLE_SUSPEND
-
-LOCAL_MODULE := charger_oppo
-LOCAL_MODULE_TAGS := optional
-LOCAL_FORCE_STATIC_EXECUTABLE := true
-LOCAL_MODULE_PATH := $(TARGET_ROOT_OUT_SBIN)
-LOCAL_UNSTRIPPED_PATH := $(TARGET_ROOT_OUT_SBIN_UNSTRIPPED)
-
-LOCAL_C_INCLUDES := bootable/recovery
-
-LOCAL_STATIC_LIBRARIES := libminui libpixelflinger_static libpng
-LOCAL_STATIC_LIBRARIES += libsuspend
-LOCAL_STATIC_LIBRARIES += libz libstdc++ libcutils liblog libm libc
-
-include $(BUILD_EXECUTABLE)
 
 define _add-oppo-charger-image
 include $$(CLEAR_VARS)
@@ -49,5 +29,26 @@ include $(BUILD_PHONY_PACKAGE)
 
 _add-charger-image :=
 _img_modules :=
+
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES := \
+	charger.c
+
+LOCAL_CFLAGS += -DCHARGER_ENABLE_SUSPEND
+
+LOCAL_MODULE := charger_oppo
+LOCAL_MODULE_TAGS := optional
+LOCAL_FORCE_STATIC_EXECUTABLE := true
+LOCAL_MODULE_PATH := $(TARGET_ROOT_OUT_SBIN)
+LOCAL_UNSTRIPPED_PATH := $(TARGET_ROOT_OUT_SBIN_UNSTRIPPED)
+LOCAL_ADDITIONAL_DEPENDENCIES := charger_res_images_oppo
+LOCAL_C_INCLUDES := bootable/recovery
+
+LOCAL_STATIC_LIBRARIES := libminui libpixelflinger_static libpng
+LOCAL_STATIC_LIBRARIES += libsuspend
+LOCAL_STATIC_LIBRARIES += libz libstdc++ libcutils liblog libm libc
+
+include $(BUILD_EXECUTABLE)
 
 endif

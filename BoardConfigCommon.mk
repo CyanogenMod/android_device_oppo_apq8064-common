@@ -14,7 +14,8 @@
 # limitations under the License.
 #
 
-BOARD_VENDOR := oppo
+# inherit from Oppo common
+-include device/oppo/common/BoardConfigCommon.mk
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
@@ -71,9 +72,6 @@ BOARD_HAVE_BLUETOOTH_QCOM := true
 
 # Camera
 USE_DEVICE_SPECIFIC_CAMERA := true
-
-# CM Hardware
-BOARD_HARDWARE_CLASS += device/oppo/apq8064-common/cmhw
 
 # Graphics
 BOARD_EGL_CFG := device/oppo/apq8064-common/configs/egl.cfg

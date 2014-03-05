@@ -66,6 +66,7 @@ on fs
     restorecon -R /sys/devices/system/cpu/cpu3/cpufreq
     restorecon /sys/kernel/mm/ksm/run
     restorecon /sys/devices/virtual/graphics/fb0/cabc
+    restorecon /sys/devices/platform/gpio-keys/disabled_keys
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -345,6 +346,8 @@ on post-fs-data
 
     chown system system /sys/devices/virtual/graphics/fb0/cabc
     chown system system /sys/devices/virtual/graphics/fb0/sre
+
+    chown system system /sys/devices/platform/gpio-keys/disabled_keys
 
     # Mpdecision state
     mkdir /data/mpdecision 0660 system system

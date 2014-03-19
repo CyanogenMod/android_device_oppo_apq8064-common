@@ -96,9 +96,9 @@ vendor/lib/libqmi_common_so.so
 vendor/lib/libqmi_encdec.so
 
 # Radio
-app/OppoNvProcess.apk
-app/OppoRadioShutdown.apk
-app/qcrilmsgtunnel.apk
+-app/OppoNvProcess.apk
+-app/OppoRadioShutdown.apk
+-app/qcrilmsgtunnel.apk
 bin/bridgemgrd
 bin/efsks
 bin/ks

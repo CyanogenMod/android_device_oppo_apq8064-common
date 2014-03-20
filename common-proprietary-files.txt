@@ -14,7 +14,7 @@ lib/libcsd-client.so
 
 # Thermal
 bin/thermald
-lib/libthermalclient.so
+vendor/lib/libthermalclient.so
 
 # GPS
 -app/com.qualcomm.location.apk

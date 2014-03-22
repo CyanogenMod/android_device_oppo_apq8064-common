@@ -35,7 +35,6 @@ on boot
     write /sys/class/android_usb/android0/iSerial ${ro.serialno}
     write /sys/class/android_usb/android0/iManufacturer ${ro.product.manufacturer}
     write /sys/class/android_usb/android0/iProduct ${ro.product.model}
-    write /sys/module/rmnet_usb/parameters/rmnet_data_init 1
 
 on property:sys.usb.config=mtp
     stop adbd

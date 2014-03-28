@@ -153,6 +153,9 @@ lib/libmm-abl-oem.so
 bin/time_daemon
 -lib/libtime_genoff.so
 
+# QuickBoot
+-app/QuickBoot.apk
+
 # Keystore
 vendor/firmware/keymaster/keymaster.b00
 vendor/firmware/keymaster/keymaster.b01

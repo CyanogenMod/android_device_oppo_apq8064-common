@@ -170,10 +170,11 @@ DEVICE_PACKAGE_OVERLAYS += vendor/$VENDOR/$DEVICE/overlay
 PRODUCT_PACKAGES += \\
     libtime_genoff \\
     com.qualcomm.location \\
-    PPPreference \\
     OppoNvProcess \\
     OppoRadioShutdown \\
-    qcrilmsgtunnel
+    PPPreference \\
+    qcrilmsgtunnel \\
+    QuickBoot
 
 \$(call inherit-product, vendor/$VENDOR/$DEVICE/$DEVICE-vendor-blobs.mk)
 EOF
@@ -232,6 +233,16 @@ include \$(CLEAR_VARS)
 LOCAL_MODULE := PPPreference
 LOCAL_MODULE_OWNER := oppo
 LOCAL_SRC_FILES := proprietary/app/PPPreference.apk
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := .apk
+LOCAL_MODULE_CLASS := APPS
+LOCAL_CERTIFICATE := platform
+include \$(BUILD_PREBUILT)
+
+include \$(CLEAR_VARS)
+LOCAL_MODULE := QuickBoot
+LOCAL_MODULE_OWNER := oppo
+LOCAL_SRC_FILES := proprietary/app/QuickBoot.apk
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_SUFFIX := .apk
 LOCAL_MODULE_CLASS := APPS

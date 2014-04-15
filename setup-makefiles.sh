@@ -218,7 +218,7 @@ LOCAL_PATH := \$(call my-dir)
 
 ifeq (\$(BOARD_VENDOR),oppo)
 ifeq (\$(TARGET_BOARD_PLATFORM),msm8960)
-ifeq (\$(QC_PROP_ROOT),)
+ifeq (\$(QCPATH),)
 
 include \$(CLEAR_VARS)
 LOCAL_MODULE := libtime_genoff

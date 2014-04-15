@@ -173,8 +173,7 @@ PRODUCT_PACKAGES += \\
     OppoNvProcess \\
     OppoRadioShutdown \\
     PPPreference \\
-    qcrilmsgtunnel \\
-    QuickBoot
+    qcrilmsgtunnel
 
 \$(call inherit-product, vendor/$VENDOR/$DEVICE/$DEVICE-vendor-blobs.mk)
 EOF

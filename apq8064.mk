@@ -27,8 +27,7 @@ TARGET_SCREEN_WIDTH := 1080
 PRODUCT_PACKAGES += \
     init.crda.sh \
     init.qcom.bt.sh \
-    init.qcom.wifi.sh \
-    init.bbv.sh
+    init.qcom.wifi.sh
 
 # Ramdisk
 PRODUCT_PACKAGES += \

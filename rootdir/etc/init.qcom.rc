@@ -450,13 +450,6 @@ on property:bluetooth.hciattach=true
 on property:bluetooth.hciattach=false
     setprop bluetooth.status off
 
-service bt-dun /system/bin/sh /system/etc/init.qcom.btdun.sh
-    class late_start
-    user bluetooth
-    group bluetooth net_bt_admin inet
-    disabled
-    oneshot
-
 service bt-sap /system/bin/sapd 15
     user bluetooth
     group bluetooth net_bt_admin
@@ -622,12 +615,6 @@ service profiler_daemon /system/bin/profiler_daemon
     group root
     disabled
 
-service hcidump /system/bin/sh /system/etc/hcidump.sh
-    user bluetooth
-    group bluetooth system net_bt_admin net_admin
-    disabled
-    oneshot
-
 service charger /sbin/charger_oppo
     class charger
 
@@ -741,10 +728,6 @@ service gpsone_daemon /system/bin/gpsone_daemon
     class late_start
     user gps
     group gps inet net_raw qcom_diag
-
-service bbvinit /system/bin/sh /system/etc/init.bbv.sh
-    class late_start
-    oneshot
 
 # CM Performance Profiles
 

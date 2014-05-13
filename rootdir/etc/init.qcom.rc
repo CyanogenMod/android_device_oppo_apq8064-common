@@ -730,8 +730,11 @@ service gpsone_daemon /system/bin/gpsone_daemon
     group gps inet net_raw qcom_diag
 
 service bbvinit /system/bin/sh /system/etc/init.bbv.sh
-    class late_start
+    diasabled
     oneshot
+
+on property:sys.boot_completed=1
+    start bbvinit
 
 # CM Performance Profiles
 

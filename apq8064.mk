@@ -190,6 +190,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196608 \
     ro.product.wireless=WCN3660 \
     ro.qualcomm.bt.hci_transport=smd \
+    ro.telephony.call_ring.multiple=false \
     ro.use_data_netmgrd=true \
     persist.data.netmgrd.qos.enable=true \
     wifi.interface=wlan0 \

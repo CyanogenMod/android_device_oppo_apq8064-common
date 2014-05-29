@@ -99,7 +99,6 @@ vendor/lib/libqmi_encdec.so
 -app/OppoNvProcess.apk
 -app/OppoRadioShutdown.apk
 -app/qcrilmsgtunnel.apk
-bin/bridgemgrd
 bin/efsks
 bin/ks
 bin/netmgrd

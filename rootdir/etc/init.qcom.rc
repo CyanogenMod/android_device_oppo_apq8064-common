@@ -419,10 +419,6 @@ on property:bluetooth.sap.status=stopped
 on property:vold.decrypt=trigger_restart_framework
     start config_bluetooth
 
-#service cnd /system/bin/cnd
-#    class late_start
-#    socket cnd stream 660 root inet
-
 service irsc_util /system/bin/logwrapper /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
@@ -463,12 +459,6 @@ service bridgemgrd /system/bin/bridgemgrd
     group radio qcom_diag
     disabled
 
-service port-bridge /system/bin/port-bridge /dev/smd0 /dev/ttyGS0
-    class late_start
-    user system
-    group system inet
-    disabled
-
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
     class main
@@ -482,11 +472,6 @@ service sensors /system/bin/sensors.qcom
     class late_start
     user root
     group root
-
-# Adjust socket buffer to enlarge TCP receive window for high bandwidth
-# but only if ro.data.large_tcp_window_size property is set.
-on property:ro.data.large_tcp_window_size=true
-    write /proc/sys/net/ipv4/tcp_adv_win_scale  2
 
 service wpa_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
@@ -570,19 +555,6 @@ on property:drmdiag.load=1
 on property:drmdiag.load=0
     stop drmdiag
 
-service wifi-crda /system/bin/sh /system/etc/init.crda.sh
-   class late_start
-   user root
-   disabled
-   oneshot
-
-
-#service atfwd /system/bin/ATFWD-daemon
-#    class late_start
-#    user system
-#    group system radio
-#    onrestart /system/bin/log -t RIL-ATFWD -p w "ATFWD daemon restarted"
-
 service ppd /system/bin/mm-pp-daemon
     class late_start
     user system
@@ -609,19 +581,8 @@ on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
 
-service profiler_daemon /system/bin/profiler_daemon
-    class late_start
-    user root
-    group root
-    disabled
-
 service charger /sbin/charger_oppo
     class charger
-
-service ssr_diag /system/bin/ssr_diag
-    class late_start
-    user system
-    group system
 
 #Disable boot timeout for external modems.
 on property:persist.sys.mdm.timeout_disable=1
@@ -696,6 +657,7 @@ service qrngp /system/bin/qrngp
 
 on property:sys.boot_completed=1
     start qrngp
+    start bbvinit
 
 service qseecomd /system/bin/qseecomd
    class late_start
@@ -732,9 +694,6 @@ service gpsone_daemon /system/bin/gpsone_daemon
 service bbvinit /system/bin/sh /system/etc/init.bbv.sh
     disabled
     oneshot
-
-on property:sys.boot_completed=1
-    start bbvinit
 
 # CM Performance Profiles
 

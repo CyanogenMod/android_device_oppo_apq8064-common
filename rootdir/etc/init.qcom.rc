@@ -131,18 +131,6 @@ on post-fs-data
     mkdir /data/system 0775 system system
     #symlink /data/misc/wifi/wpa_supplicant /data/system/wpa_supplicant
 
-    #Create directory used by sensor subsystem(dsps)
-    mkdir /data/system/sensors
-    chmod 775 /data/system/sensors
-    write /data/system/sensors/settings 1
-    chmod 664 /data/system/sensors/settings
-    chown system root /data/system/sensors/settings
-    restorecon /data/system/sensors/settings
-
-    # AKM setting data
-    mkdir /data/misc/sensors
-    chmod 775 /data/misc/sensors
-
     mkdir /persist/sensors
     chmod 775 /persist/sensors
 
@@ -555,6 +543,11 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     user camera
     group camera system inet input graphics net_bt_stack
 
+service qc-sensors /system/bin/sh /init.qcom.sensors.sh
+    class late_start
+    user root
+    oneshot
+
 service qmuxd /system/bin/qmuxd
     class main
     user radio
@@ -584,6 +577,7 @@ service sensors /system/bin/sensors.qcom
     class late_start
     user root
     group root
+    disabled
 
 service thermald /system/bin/thermald
    class main

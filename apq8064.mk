@@ -32,6 +32,7 @@ PRODUCT_PACKAGES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
+    init.qcom.sensors.sh \
     init.qcom.rc \
     init.qcom.usb.rc \
     ueventd.qcom.rc

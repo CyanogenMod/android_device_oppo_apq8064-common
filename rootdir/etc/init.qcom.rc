@@ -399,11 +399,7 @@ on property:init.svc.bootanim=running
 service bbvinit /system/bin/sh /system/etc/init.bbv.sh
     class late_start
     user root
-    disabled
     oneshot
-
-on property:sys.boot_completed=1
-    start bbvinit
 
 service bt-sap /system/bin/sapd 15
     user bluetooth

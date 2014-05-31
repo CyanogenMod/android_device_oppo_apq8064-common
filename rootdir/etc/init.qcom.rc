@@ -151,9 +151,6 @@ on boot
     # Enable DEBUG_SUSPEND, DEBUG_EXIT_SUSPEND, and DEBUG_WAKEUP
     write /sys/module/wakelock/parameters/debug_mask 7
 
-    #For bridgemgr daemon to inform the USB driver of the correct transport
-    chown radio radio /sys/class/android_usb/f_rmnet_smd_sdio/transport
-
     #To allow interfaces to get v6 address when tethering is enabled
     write /proc/sys/net/ipv6/conf/rmnet0/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet1/accept_ra 2
@@ -424,10 +421,6 @@ service irsc_util /system/bin/logwrapper /system/bin/irsc_util "/etc/sec_config"
     user root
     oneshot
 
-service rmt_storage /system/bin/rmt_storage
-    class core
-    user root
-
 service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
     class core
     user root
@@ -452,12 +445,6 @@ service bt-sap /system/bin/sapd 15
     class late_start
     disabled
     oneshot
-
-service bridgemgrd /system/bin/bridgemgrd
-    class main
-    user radio
-    group radio qcom_diag
-    disabled
 
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd

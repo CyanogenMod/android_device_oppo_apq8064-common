@@ -414,11 +414,6 @@ on property:bluetooth.sap.status=stopped
 service charger /sbin/charger_oppo
     class charger
 
-service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
-    class core
-    user root
-    oneshot
-
 service diag_mdlog_start /system/bin/diag_mdlog
     class late_start
     user sdcard_rw
@@ -477,7 +472,7 @@ service gsiff_daemon /system/bin/gsiff_daemon
 service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     class late_start
     user bluetooth
-    group qcom_oncrpc bluetooth net_bt_admin system
+    group qcom_oncrpc bluetooth net_bt_admin system net_bt_stack
     disabled
     oneshot
 

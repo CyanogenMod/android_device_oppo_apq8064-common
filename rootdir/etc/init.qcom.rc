@@ -179,6 +179,10 @@ on post-fs-data
     # Mpdecision state
     mkdir /data/mpdecision 0660 system system
 
+    # Wait for confirmation that the firmware images got loaded before
+    # proceeding with late_start
+    wait /dev/efs_hsic_bridge
+
     setprop vold.post_fs_data_done 1
 
 on early-boot

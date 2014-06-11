@@ -582,9 +582,10 @@ service time_daemon /system/bin/time_daemon
    user root
    group root
 
-service wcnss-init /system/bin/sh /system/etc/init.qcom.wifi.sh
+service wcnss-service /system/bin/wcnss_service
     class main
-    user root
+    user system
+    group system wifi
     oneshot
 
 service wpa_supplicant /system/bin/wpa_supplicant \

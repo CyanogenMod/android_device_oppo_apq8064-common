@@ -269,10 +269,11 @@ on boot
     chown root system /proc/touchpanel/keypad_enable
     chmod 0660 /proc/touchpanel/keypad_enable
 
+    chown root system /sys/devices/platform/gpio-keys/disabled_keys
+    chmod 0660 /sys/devices/platform/gpio-keys/disabled_keys
+
     chown system system /sys/devices/virtual/graphics/fb0/cabc
     chown system system /sys/devices/virtual/graphics/fb0/sre
-
-    chown system system /sys/devices/platform/gpio-keys/disabled_keys
 
     # Enable DEBUG_SUSPEND, DEBUG_EXIT_SUSPEND, and DEBUG_WAKEUP
     write /sys/module/wakelock/parameters/debug_mask 7

@@ -128,27 +128,5 @@ else
     TARGET_RECOVERY_FSTAB := device/oppo/apq8064-common/rootdir/etc/fstab.qcom
 endif
 
-# SELinux
-BOARD_SEPOLICY_DIRS += device/oppo/apq8064/sepolicy
-BOARD_SEPOLICY_UNION += \
-       app.te \
-       bluetooth.te \
-       device.te \
-       domain.te \
-       drmserver.te \
-       file.te \
-       file_contexts \
-       hci_init.te \
-       init_shell.te \
-       keystore.te \
-       mediaserver.te \
-       kickstart.te \
-       nfc.te \
-       rild.te \
-       surfaceflinger.te \
-       system.te \
-       ueventd.te \
-       wpa.te
-
 # inherit from the proprietary version
 -include vendor/oppo/apq8064-common/BoardConfigVendor.mk

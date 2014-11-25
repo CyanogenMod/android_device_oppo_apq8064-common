@@ -86,7 +86,6 @@ TARGET_PROVIDES_LIBLIGHT := true
 
 # Radio
 BOARD_PROVIDES_LIBRIL := true
-TARGET_ADDITIONAL_BOOTCLASSPATH := qcnvitems:qcrilhook
 
 # Webkit
 ENABLE_WEBGL := true

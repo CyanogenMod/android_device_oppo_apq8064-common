@@ -39,8 +39,6 @@ on early-init
     write /sys/module/rmnet_usb/parameters/rmnet_data_init 1
 
 on init
-    export BOOTCLASSPATH ${BOOTCLASSPATH}:/system/framework/qcnvitems.jar:/system/framework/qcrilhook.jar:/system/framework/qcmediaplayer.jar
-
     # Set permissions for persist partition
     mkdir /persist 0771 system system
 

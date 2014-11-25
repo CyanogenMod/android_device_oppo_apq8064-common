@@ -52,11 +52,6 @@ PRODUCT_PACKAGES += \
     libaudio-resampler \
     tinymix
 
-# Charger
-PRODUCT_PACKAGES += \
-    charger_res_oppo \
-    charger_oppo
-
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     make_ext4fs \

@@ -420,8 +420,10 @@ on property:bluetooth.sap.status=running
 on property:bluetooth.sap.status=stopped
     stop bt-sap
 
-service charger /sbin/charger_oppo
+service charger /sbin/healthd -c
     class charger
+    critical
+    seclabel u:r:healthd:s0
 
 service diag_mdlog_start /system/bin/diag_mdlog
     class late_start

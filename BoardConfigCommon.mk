@@ -109,6 +109,9 @@ endif
 # SELinux
 -include device/qcom/sepolicy/sepolicy.mk
 
+BOARD_SEPOLICY_DIRS += \
+    device/oppo/apq8064-common/sepolicy
+
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
 BOARD_WLAN_DEVICE := qcwcn

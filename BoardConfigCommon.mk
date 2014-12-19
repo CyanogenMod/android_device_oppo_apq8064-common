@@ -94,6 +94,9 @@ BOARD_PERSISTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VOLD_MAX_PARTITIONS := 31
 TARGET_USERIMAGES_USE_EXT4 := true
 
+# Radio
+BOARD_RIL_CLASS := ../../../device/oppo/apq8064-common/ril/
+
 # Recovery
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 

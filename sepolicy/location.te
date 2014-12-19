@@ -1,0 +1,1 @@
+allow location mdm_device:chr_file { getattr read open ioctl };

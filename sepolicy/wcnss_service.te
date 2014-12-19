@@ -1,0 +1,1 @@
+allow wcnss_service opponvitem_file:file { getattr read open };

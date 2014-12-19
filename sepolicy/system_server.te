@@ -1,0 +1,2 @@
+allow system_server mdm_device:chr_file { getattr read open ioctl };
+allow system_server time_daemon:unix_stream_socket { connectto };

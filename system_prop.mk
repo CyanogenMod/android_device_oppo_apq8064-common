@@ -13,10 +13,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.gps.qmienabled=true
 
-# Media
-PRODUCT_PROPERTY_OVERRIDES += \
-    media.stagefright.use-awesome=true
-
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.data.netmgrd.qos.enable=true \

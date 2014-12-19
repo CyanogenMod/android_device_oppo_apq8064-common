@@ -1,0 +1,2 @@
+allow wcnss_service opponvitem_file:dir search;
+allow wcnss_service opponvitem_file:file { getattr read open };

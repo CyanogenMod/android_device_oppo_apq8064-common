@@ -1,0 +1,2 @@
+allow location mdm_device:chr_file { getattr read open ioctl };
+allow location system_data_file:dir write;

@@ -1,0 +1,20 @@
+
+# Camera
+/data/cam_socket.*                          u:object_r:camera_socket:s0
+/dev/gemini.*                               u:object_r:camera_device:s0
+
+# Display
+/sys/devices/virtual/graphics/fb0/cabc      u:object_r:sysfs_graphics:s0
+
+# Keys
+/sys/devices/platform/gpio-keys/disabled_keys   u:object_r:sysfs_keypad:s0
+
+# GPS
+/data/misc/gpsone_d(/.*)?                   u:object_r:location_data_file:s0
+/data/misc/gsiff_ctrl_q                     u:object_r:location_data_file:s0
+
+# Lights
+/dev/SN3193                                 u:object_r:lights_device:s0
+
+# Oppo NV
+/data/opponvitems(/.*)?                     u:object_r:opponvitem_file:s0

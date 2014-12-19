@@ -1,0 +1,4 @@
+allow system_server dex2oat_exec:file { read open execute execute_no_trans };
+allow system_server mdm_device:chr_file { getattr read open ioctl };
+allow system_server sensors_data_file:dir search;
+allow system_server time_daemon:unix_stream_socket connectto;

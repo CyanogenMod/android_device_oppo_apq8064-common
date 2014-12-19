@@ -1,0 +1,4 @@
+allow system_app proc_touchpanel:dir search;
+allow system_app proc_touchpanel:file { getattr open read write };
+allow system_app sysfs_graphics:file { getattr open read write };
+allow system_app sysfs_keypad:file { getattr open read write };

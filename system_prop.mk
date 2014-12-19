@@ -18,6 +18,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.data.netmgrd.qos.enable=true \
     ro.baseband.arch=mdm \
     ro.telephony.call_ring.multiple=false \
+    ro.telephony.ril_class=OppoRIL \
     ro.use_data_netmgrd=true
 
 # Thermal

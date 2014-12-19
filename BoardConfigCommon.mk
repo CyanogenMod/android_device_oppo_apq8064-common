@@ -95,16 +95,7 @@ BOARD_VOLD_MAX_PARTITIONS := 31
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # Recovery
-BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_RECOVERY_SWIPE := true
-BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
-ifeq ($(WITH_SIMPLE_RECOVERY),true)
-    PRODUCT_EXTRA_RECOVERY_KEYS += vendor/extra/recovery_keys/OPPO_N1
-    TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery.fstab
-else
-    TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
-endif
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 
 # SELinux
 -include device/qcom/sepolicy/sepolicy.mk

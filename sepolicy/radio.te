@@ -1,0 +1,2 @@
+allow radio proc_touchpanel:dir { search };
+allow radio proc_touchpanel:file { getattr open read write };

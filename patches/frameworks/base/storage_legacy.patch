@@ -1,0 +1,79 @@
+From 1656f02a1cef8f4ee4692ad1e416121062224289 Mon Sep 17 00:00:00 2001
+From: Jon <haus.xda@gmail.com>
+Date: Tue, 18 Feb 2014 12:38:16 -0500
+Subject: [PATCH] MountService: Add support for multiple storage configurations
+
+Currently AOSP only supports a single storage configuration that is hardcoded
+in storage_list.xml. Some device updates are now merging data and internal
+storage partitions, and as a result require the storage list to support two
+different variations.
+
+By utilizing the sys.storage_legacy property this will allow for the framework
+to support multiple configurations which can be determined during boot.
+
+Change-Id: Id795520425ea3e99a5234e10c978dcdbd68a1311
+---
+
+diff --git a/core/res/res/xml/storage_list_legacy.xml b/core/res/res/xml/storage_list_legacy.xml
+new file mode 100644
+index 0000000..ceebdcc
+--- /dev/null
++++ b/core/res/res/xml/storage_list_legacy.xml
+@@ -0,0 +1,28 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!--
++**
++** Copyright 2011, The Android Open Source Project
++**
++** Licensed under the Apache License, Version 2.0 (the "License")
++** you may not use this file except in compliance with the License.
++** You may obtain a copy of the License at
++**
++**     http://www.apache.org/licenses/LICENSE-2.0
++**
++** Unless required by applicable law or agreed to in writing, software
++** distributed under the License is distributed on an "AS IS" BASIS,
++** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++** See the License for the specific language governing permissions and
++** limitations under the License.
++*/
++-->
++
++<!-- See storage config details at http://source.android.com/tech/storage/ -->
++
++<StorageList xmlns:android="http://schemas.android.com/apk/res/android">
++    <!-- removable is not set in nosdcard product -->
++    <storage
++        android:mountPoint="/storage/sdcard"
++        android:storageDescription="@string/storage_usb"
++        android:primary="true" />
++</StorageList>
+diff --git a/services/core/java/com/android/server/MountService.java b/services/core/java/com/android/server/MountService.java
+index e400fb6..a5b0823 100644
+--- a/services/core/java/com/android/server/MountService.java
++++ b/services/core/java/com/android/server/MountService.java
+@@ -1299,9 +1299,22 @@
+         mVolumeStates.clear();
+ 
+         Resources resources = mContext.getResources();
+-
+         int id = com.android.internal.R.xml.storage_list;
+-        XmlResourceParser parser = resources.getXml(id);
++        String pkg = mContext.getPackageName();
++        int idAlt = resources.getIdentifier("storage_list_legacy", "xml", pkg);
++        String legacy = SystemProperties.get("sys.storage_legacy", "");
++        XmlResourceParser parser = null;
++
++        if ((legacy.equals("1") || legacy.equalsIgnoreCase("true")) && idAlt != 0) {
++            parser = resources.getXml(idAlt);
++            Slog.i(TAG, "readStorageListLocked: using legacy storage list");
++        }
++
++        if (parser == null) {
++            Slog.i(TAG, "readStorageListLocked: using default storage list");
++            parser = resources.getXml(id);
++        }
++
+         AttributeSet attrs = Xml.asAttributeSet(parser);
+ 
+         try {

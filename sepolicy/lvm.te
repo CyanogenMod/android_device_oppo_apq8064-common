@@ -1,6 +1,6 @@
 ###########################
-# LVM support
-#
+# LVM sepolicy
+###########################
 
 type lvm, domain;
 domain_trans(init,rootfs,lvm)

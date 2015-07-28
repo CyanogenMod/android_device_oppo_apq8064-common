@@ -1,1 +1,1 @@
-type lights_device, dev_type;
+type lights_device, lvm_device, dev_type;

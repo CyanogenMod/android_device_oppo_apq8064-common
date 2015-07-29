@@ -51,9 +51,8 @@ on early-init
     #the detected configuration.  See the script source for details
     #Requires busybox to be added to the initial ramdisk of the kernel,
     #AOSP's toolbox+sh should also work
-    setcon u:r:lvm:s0
+
     exec /sbin/static/busybox sh /lvm_init.sh
-    setcon u:r:init:s0
 
 on init
     # Set permissions for persist partition

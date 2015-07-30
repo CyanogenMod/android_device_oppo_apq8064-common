@@ -45,12 +45,12 @@ on early-init
     wait /dev/block/platform/msm_sdcc.1/by-name/sdcard
     #Scan for LVM partitions.  Our lvm.conf restricts this to the userdata and sdcard partitions
     #exec_context u:r:lvm:s0 /sbin/lvm vgscan --mknodes --ignorelockingfailure
-    exec u:r:lvm:s0 /sbin/lvm vgscan --mknodes --ignorelockingfailure
+    exec /sbin/lvm vgscan --mknodes --ignorelockingfailure
 
     #Activate any partitions found
 
     #exec_context u:r:lvm:s0 /sbin/lvm vgchange -aly --ignorelockingfailure
-    exec u:r:lvm:s0 /sbin/lvm vgchange -aly --ignorelockingfailure
+    exec /sbin/lvm vgchange -aly --ignorelockingfailure
     
     #Detect if LVM is active and copy the appropriate fstabs and environment RCs for
     #the detected configuration.  See the script source for details

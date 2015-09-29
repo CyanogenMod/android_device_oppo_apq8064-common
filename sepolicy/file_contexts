@@ -3,9 +3,6 @@
 /data/cam_socket.*                          u:object_r:camera_socket:s0
 /dev/gemini.*                               u:object_r:camera_device:s0
 
-# Display
-/sys/devices/virtual/graphics/fb0/cabc      u:object_r:sysfs_graphics:s0
-
 # Keys
 /sys/devices/platform/gpio-keys/disabled_keys   u:object_r:sysfs_keypad:s0
 

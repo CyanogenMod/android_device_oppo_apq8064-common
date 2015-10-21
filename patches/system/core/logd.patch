@@ -1,0 +1,42 @@
+diff --git a/init/Android.mk b/init/Android.mk
+index b060f04..396e0a6 100644
+--- a/init/Android.mk
++++ b/init/Android.mk
+@@ -63,10 +63,10 @@ LOCAL_STATIC_LIBRARIES := \
+     libinit \
+     libfs_mgr \
+     libsquashfs_utils \
++    libext4_utils_static \
+     liblogwrap \
+     libcutils \
+     libbase \
+-    libext4_utils_static \
+     libutils \
+     liblog \
+     libc \
+diff --git a/liblog/logd_write_kern.c b/liblog/logd_write_kern.c
+index 8742b34..a1eb63c 100644
+--- a/liblog/logd_write_kern.c
++++ b/liblog/logd_write_kern.c
+@@ -26,7 +26,9 @@
+ #include <time.h>
+ #include <unistd.h>
+ 
++#ifdef __BIONIC__
+ #include <android/set_abort_message.h>
++#endif
+ 
+ #include <log/log.h>
+ #include <log/logd.h>
+@@ -167,9 +169,11 @@ int __android_log_buf_write(int bufID, int prio, const char *tag, const char *ms
+             tag = tmp_tag;
+     }
+ 
++#if __BIONIC__
+     if (prio == ANDROID_LOG_FATAL) {
+         android_set_abort_message(msg);
+     }
++#endif
+ 
+     vec[0].iov_base   = (unsigned char *) &prio;
+     vec[0].iov_len    = 1;

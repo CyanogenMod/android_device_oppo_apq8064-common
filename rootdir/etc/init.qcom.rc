@@ -42,21 +42,12 @@ on init
     # Set permissions for persist partition
     mkdir /persist 0771 system system
 
-    # See storage config details at http://source.android.com/tech/storage/
-    mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
-    mkdir /storage/sdcard0 0700 root root
+    # Support legacy paths
+    symlink /sdcard /mnt/sdcard
+    symlink /sdcard /storage/sdcard0
 
-    mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
-    mkdir /storage/usbdisk 0700 root root
-
-    # for backwards compatibility
-    symlink /storage/sdcard0 /sdcard
-    symlink /storage/sdcard0 /mnt/sdcard
-    symlink /storage/usbdisk /usbdisk
-    symlink /storage/usbdisk /mnt/usbdisk
-
-    export EXTERNAL_STORAGE /storage/sdcard0
-    export SECONDARY_STORAGE /storage/usbdisk
+    # By default, primary storage is physical
+    setprop ro.vold.primary_physical 1
 
 on fs
     mount_all fstab.qcom
@@ -459,16 +450,6 @@ service ds_fmc_appd /system/bin/ds_fmc_appd -p "rmnet0" -D
 
 on property:persist.data.ds_fmc_app.mode=1
     start ds_fmc_appd
-
-# usb-otg storage
-service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbdisk /storage/usbdisk
-   class late_start
-   disabled
-
-# internal sdcard
-service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0 /storage/sdcard0
-   class late_start
-   disabled
 
 service gpsone_daemon /system/bin/gpsone_daemon
     class late_start

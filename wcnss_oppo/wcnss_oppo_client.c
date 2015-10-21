@@ -31,6 +31,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#include <errno.h>
 #include <unistd.h>
 
 int wcnss_init_qmi(void)
@@ -45,8 +46,10 @@ int wcnss_qmi_get_wlan_address(unsigned char *pBdAddr)
     char buf[MAC_ADDR_SIZE];
     struct stat mac_stat;
 
+    i=0;
     do {
         usleep(WAIT_TIME);
+        i++;
     } while (stat(MAC_ADDR_PATH, &mac_stat) && i < MAX_WAIT_COUNT);
 
     if (i == MAX_WAIT_COUNT) {

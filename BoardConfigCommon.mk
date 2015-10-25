@@ -53,6 +53,8 @@ BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QC_TIME_SERVICES := true
 TARGET_NO_RPC := true
 
+TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap_enable"
+
 # Audio
 BOARD_HAVE_CSD_FAST_CALL_SWITCH := true
 BOARD_HAVE_NEW_QCOM_CSDCLIENT := true

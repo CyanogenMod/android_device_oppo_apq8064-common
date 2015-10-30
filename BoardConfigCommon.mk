@@ -47,7 +47,8 @@ BOARD_CUSTOM_BOOTIMG_MK := device/oppo/apq8064-common/mkbootimg.mk
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 
 # Init
-TARGET_INIT_VENDOR_LIB := libinit_find5
+TARGET_INIT_VENDOR_LIB := libinit_msm
+TARGET_LIBINIT_DEFINES_FILE := device/oppo/apq8064-common/init/init_find5.cpp
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true

@@ -58,7 +58,7 @@ static void set_oppo_layout()
     }
 }
 
-void vendor_load_properties()
+void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *board_type)
 {
     set_oppo_layout();
 }

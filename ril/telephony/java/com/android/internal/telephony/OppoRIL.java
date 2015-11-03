@@ -30,13 +30,13 @@ import android.util.Log;
  */
 public class OppoRIL extends RIL implements CommandsInterface {
 
+    public OppoRIL(Context context, int networkMode, int cdmaSubscription) {
+        super(context, networkMode, cdmaSubscription);
+    }
+
     public OppoRIL(Context context, int preferredNetworkType,
             int cdmaSubscription, Integer instanceId) {
         this(context, preferredNetworkType, cdmaSubscription);
-    }
-
-    public OppoRIL(Context context, int networkMode, int cdmaSubscription) {
-        super(context, networkMode, cdmaSubscription);
     }
 
     @Override

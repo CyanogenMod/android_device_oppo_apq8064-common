@@ -45,6 +45,9 @@ TARGET_KERNEL_SOURCE := kernel/oppo/n1
 # Flags
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 
+# Turn off packed relocations (linker)
+COMMON_GLOBAL_CFLAGS += -DUSE_RELA
+
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QC_TIME_SERVICES := true

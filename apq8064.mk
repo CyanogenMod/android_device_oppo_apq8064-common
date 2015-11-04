@@ -203,6 +203,10 @@ PRODUCT_PACKAGES += \
     linville.key.pub.pem \
     regulatory.bin
 
+# Oppo symbols
+PRODUCT_PACKAGES += \
+    liboppo_symbols
+
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/oppo/apq8064-common/apq8064-common-vendor.mk)
 

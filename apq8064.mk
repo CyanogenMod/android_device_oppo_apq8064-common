@@ -114,7 +114,8 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
-    $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml
+    $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    $(LOCAL_PATH)/configs/media_codecs_performance.xml:system/etc/media_codecs_performance.xml
 
 # NFC packages
 ifeq ($(TARGET_BUILD_VARIANT),user)
@@ -210,6 +211,10 @@ PRODUCT_PACKAGES += \
     crda \
     linville.key.pub.pem \
     regulatory.bin
+
+# Oppo symbols
+PRODUCT_PACKAGES += \
+    liboppo_symbols
 
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/oppo/apq8064-common/apq8064-common-vendor.mk)

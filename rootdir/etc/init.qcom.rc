@@ -54,6 +54,8 @@ on early-init
     exec /sbin/static/busybox sh /lvm_init.sh
 
 on init
+    export LD_PRELOAD "/system/lib/liboppo_symbols.so"
+
     # Set permissions for persist partition
     mkdir /persist 0771 system system
 

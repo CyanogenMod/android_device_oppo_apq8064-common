@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-#include <cstddef>
-
 /* void VectorImpl::reservedVectorImpl */
 extern "C" void _ZN7android10VectorImpl19reservedVectorImpl1Ev() { }
 extern "C" void _ZN7android10VectorImpl19reservedVectorImpl2Ev() { }
@@ -35,9 +33,3 @@ extern "C" void _ZN7android16SortedVectorImpl25reservedSortedVectorImpl5Ev() { }
 extern "C" void _ZN7android16SortedVectorImpl25reservedSortedVectorImpl6Ev() { }
 extern "C" void _ZN7android16SortedVectorImpl25reservedSortedVectorImpl7Ev() { }
 extern "C" void _ZN7android16SortedVectorImpl25reservedSortedVectorImpl8Ev() { }
-
-/* Backwards compatibility for camera HAL */
-extern "C" void _ZN7android10MemoryBaseC1ERKNS_2spINS_11IMemoryHeapEEEij(void*, void*, ssize_t, size_t);
-extern "C" void _ZN7android10MemoryBaseC1ERKNS_2spINS_11IMemoryHeapEEElj(void* obj, void* h, long o, unsigned int size) {
-    _ZN7android10MemoryBaseC1ERKNS_2spINS_11IMemoryHeapEEEij(obj, h, o, size);
-}

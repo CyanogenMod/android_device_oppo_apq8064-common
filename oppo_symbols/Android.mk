@@ -17,7 +17,9 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := \
-    oppo_symbols.cpp
+    icu53 \
+    memory_base \
+    vector.cpp
 
 LOCAL_SHARED_LIBRARIES := libbinder
 

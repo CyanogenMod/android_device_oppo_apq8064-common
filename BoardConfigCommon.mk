@@ -17,6 +17,8 @@
 # inherit from Oppo common
 -include device/oppo/common/BoardConfigCommon.mk
 
+TARGET_SPECIFIC_HEADER_PATH += device/oppo/apq8064-common/include
+
 LOCAL_PATH := device/oppo/apq8064-common
 
 # Platform

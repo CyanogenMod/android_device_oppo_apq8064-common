@@ -17,11 +17,11 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := \
-    icu53 \
-    memory_base \
+    icu53_symbols.cpp \
+    memory_base.cpp \
     vector.cpp
 
-LOCAL_SHARED_LIBRARIES := libbinder
+LOCAL_SHARED_LIBRARIES := libbinder libicuuc libicui18n
 
 LOCAL_MODULE := liboppo_symbols
 LOCAL_MODULE_TAGS := optional

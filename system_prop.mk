@@ -4,9 +4,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
+    debug.sf.hw=1 \
     debug.egl.hw=1 \
+    debug.composition.type=dyn \
+    debug.mdpcomp.maxlayer=3 \
     debug.mdpcomp.logs=0 \
-    persist.hwc.mdpcomp.enable=true \
     ro.opengles.version=196608
 
 # GPS

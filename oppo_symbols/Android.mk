@@ -21,7 +21,10 @@ LOCAL_SRC_FILES := \
     memory_base.cpp \
     vector.cpp
 
-LOCAL_SHARED_LIBRARIES := libbinder
+LOCAL_C_INCLUDES += \
+    external/icu/icu4c/source/common
+
+LOCAL_SHARED_LIBRARIES := libbinder libicuuc
 
 LOCAL_MODULE := liboppo_symbols
 LOCAL_MODULE_TAGS := optional

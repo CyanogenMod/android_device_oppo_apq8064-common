@@ -16,22 +16,50 @@
 
 #include "unicode/utext.h"
 
+/* u_digit_48(UChar32 ch, int8_t radix) */
 U_CAPI int32_t U_EXPORT2
 u_digit_48(UChar32 ch, int8_t radix) {
 	return u_digit(ch, radix);
 }
 
+/* u_digit_53(UChar32 ch, int8_t radix) */
+U_CAPI int32_t U_EXPORT2
+u_digit_53(UChar32 ch, int8_t radix) {
+    return u_digit(ch, radix);
+}
+
+/* utext_close_48(UText *ut) */
 U_CAPI UText * U_EXPORT2
 utext_close_48(UText *ut) {
 	return utext_close(ut);
 }
 
+/* utext_close_53(UText *ut) */
+U_CAPI UText * U_EXPORT2
+utext_close_53(UText *ut) {
+    return utext_close(ut);
+}
+
+/* utext_openUChars_48(UText *ut, const UChar *s, int64_t length, UErrorCode *status) */
 U_CAPI UText * U_EXPORT2
 utext_openUChars_48(UText *ut, const UChar *s, int64_t length, UErrorCode *status) {
 	return utext_openUChars(ut, s, length, status);
 }
 
+/* utext_openUChars_53(UText *ut, const UChar *s, int64_t length, UErrorCode *status) */
+U_CAPI UText * U_EXPORT2
+utext_openUChars_53(UText *ut, const UChar *s, int64_t length, UErrorCode *status) {
+    return utext_openUChars(ut, s, length, status);
+}
+
+/* u_errorName_48(UErrorCode code) */
 U_CAPI const char * U_EXPORT2
 u_errorName_48(UErrorCode code) {
 	return u_errorName(code);
+}
+
+/* u_errorName_53(UErrorCode code) */
+U_CAPI const char * U_EXPORT2
+u_errorName_53(UErrorCode code) {
+    return u_errorName(code);
 }

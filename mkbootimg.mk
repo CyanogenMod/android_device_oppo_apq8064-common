@@ -19,7 +19,7 @@ $(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) \
 		$(MINIGZIP)
 	@echo -e ${CL_CYN}"----- Deleting useless files in recovery ramdisk ------"${CL_RST}
 	$(hide) rm -rf $(TARGET_RECOVERY_ROOT_OUT)/lvm_*
-	$(call build-recoveryimage-target, $@)
+	$(call build-recoveryramdisk, $@)
 	@echo -e ${CL_CYN}"----- Making recovery ramdisk ------"${CL_RST}
 	$(hide) rm -f $(recovery_uncompressed_ramdisk)
 	$(MKBOOTFS) $(TARGET_RECOVERY_ROOT_OUT) > $(recovery_uncompressed_ramdisk)

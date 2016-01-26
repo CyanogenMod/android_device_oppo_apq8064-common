@@ -1,4 +1,4 @@
-#!/sbin/static/busybox sh
+#!/sbin/sh
 set +x
 _PATH="$PATH"
 export PATH=/sbin
@@ -11,12 +11,18 @@ export PATH=/sbin
 #this is an LVM configuration and copy LVM fstabs
 #and env.  If it doesn't exist, assume a standard config
 if [ -e /dev/lvpool/userdata ]; then
-    /sbin/static/busybox cp /fstab.qcom.lvm /fstab.qcom
-    /sbin/static/busybox cp /fstab.qcom.lvm /etc/recovery.fstab
+    sed -i '/sdcard/s/^/#/' /fstab.qcom
+    sed -i '/data/s/^/#/' /fstab.qcom
+    sed -i '/lvpool/s/^#//' /fstab.qcom
+    sed -i '/sdcard/s/^/#/' /etc/recovery.fstab
+    sed -i '/data/s/^/#/' /etc/recovery.fstab
+    sed -i '/lvpool/s/^#//' /etc/recovery.fstab
 elif [ -e /dev/block/platform/msm_sdcc.1/by-name/sdcard ]; then
-    /sbin/static/busybox cp /fstab.qcom.std /fstab.qcom
-    /sbin/static/busybox cp /fstab.qcom.std /etc/recovery.fstab
+    sed -i '/lvpool/s/^/#/' /fstab.qcom
+    sed -i '/lvpool/s/^/#/' /etc/recovery.fstab
 else
-    /sbin/static/busybox cp /fstab.qcom.ufd /fstab.qcom
-    /sbin/static/busybox cp /fstab.qcom.ufd /etc/recovery.fstab
+    sed -i '/sdcard/s/^/#/' /fstab.qcom
+    sed -i '/lvpool/s/^/#/' /fstab.qcom
+    sed -i '/sdcard/s/^/#/' /etc/recovery.fstab
+    sed -i '/lvpool/s/^/#/' /etc/recovery.fstab
 fi

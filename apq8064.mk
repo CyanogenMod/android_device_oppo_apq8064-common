@@ -157,9 +157,7 @@ PRODUCT_PACKAGES += \
     init.qcom.bt.sh
 
 PRODUCT_PACKAGES += \
-    fstab.qcom.std \
-    fstab.qcom.lvm \
-    fstab.qcom.ufd \
+    fstab.qcom \
     init.qcom.rc \
     init.qcom.usb.rc \
     init.recovery.qcom.rc \
@@ -167,7 +165,6 @@ PRODUCT_PACKAGES += \
 
 # LVM
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/lvm/lvm_init.sh:root/lvm_init.sh \
     $(LOCAL_PATH)/lvm/lvm_init_recovery.sh:recovery/root/sbin/lvm_init_recovery.sh \
     $(LOCAL_PATH)/lvm/lvm:root/sbin/lvm \
     $(LOCAL_PATH)/lvm/lvm.conf:root/lvm/etc/lvm.conf

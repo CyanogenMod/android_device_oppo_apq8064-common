@@ -47,11 +47,6 @@ on early-init
     exec /sbin/lvm vgscan --mknodes --ignorelockingfailure
     #Activate any partitions found
     exec /sbin/lvm vgchange -aly --ignorelockingfailure
-    #Detect if LVM is active and copy the appropriate fstabs and environment RCs for
-    #the detected configuration.  See the script source for details
-    #Requires busybox to be added to the initial ramdisk of the kernel,
-    #AOSP's toolbox+sh should also work
-    exec /sbin/static/busybox sh /lvm_init.sh
 
 on init
     export LD_PRELOAD "/system/lib/liboppo_symbols.so"

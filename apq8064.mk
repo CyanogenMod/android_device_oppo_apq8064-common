@@ -173,9 +173,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine-8064.conf:system/etc/thermal-engine.conf
 
-# Torch
+# Camera
 PRODUCT_PACKAGES += \
-    Torch
+    Snap
 
 # USB
 PRODUCT_PACKAGES += \

@@ -1,0 +1,3 @@
+allow init self:socket { read ioctl };
+allow init qmuxd_socket:sock_file { write };
+allow init qmuxd:unix_stream_socket { connectto };

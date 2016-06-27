@@ -47,7 +47,7 @@ LOCAL_C_INCLUDES := $(call project-path-for,recovery)
 
 LOCAL_STATIC_LIBRARIES := libminui libpixelflinger_static libpng
 LOCAL_STATIC_LIBRARIES += libsuspend
-LOCAL_STATIC_LIBRARIES += libz libstdc++ libcutils liblog libm libc
+LOCAL_STATIC_LIBRARIES += libz libstdc++ libcutils liblog libm libc libutils
 
 include $(BUILD_EXECUTABLE)
 
